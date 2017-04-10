@@ -1,0 +1,21 @@
+[version 1.001] - 01.06.2017
+- Initial deployment
+- Supports DP submission
+- Read PRN path from config file(AEGIS_ADDSOURCE.exe.config). The setting name entry is "PRN".
+Requirements:
+- The machine that this tool will be executed should have an installed Microsoft Office(specially Excel).
+Config File:
+- SUBMISSION 
+	- ignore this setting. This is for "NV" submission
+- PRN 
+	- full file path of the PRN. Should have no space between path.
+- OFFICIAL_XML 
+	- full file path of the current OPR's XML. Should have no space between path.
+- OUT_PATH 	
+	- the directory wherein you want the output to be saved. This should be a directory. Should have no space between path.
+	- This should be a directory since the tool has no catch method yet for input here that is not a directory
+
+[version 1.10] - 01.06.2017
+- Supports DP/NV/MV/DP-RP
+  - For DP:
+  	- 

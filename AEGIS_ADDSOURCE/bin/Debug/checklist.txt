@@ -1,0 +1,29 @@
+<!-- ##Terminate_32bit## --> 
+<!-- ##Terminate_32bit_with_Clean## -->
+<!-- ##Terminate_64bit## -->
+<!-- ##Terminate_64bit_with_Clean## -->
+<!-- ##Query_32bit_DCE-QUERY## -->
+<!-- ##Query_32bit_CENSUS-QUERY(suggestionAction:TERMINATE)## -->
+<!-- ##Query_32bit_CENSUS-QUERY(suggestionAction:CLEAN)## -->
+<!-- ##32bit_DENY## -->
+<!-- ##Query_64bit_DCE-QUERY## -->
+<!-- ##Query_64bit_CENSUS-QUERY(suggestionAction:TERMINATE)## -->
+<!-- ##Query_64bit_CENSUS-QUERY(suggestionAction:CLEAN)## -->
+<!-- ##64bit_DENY## -->
+<PlatformPair description="Feedback_32bit">
+<PlatformPair description="Feedback_64bit">
+<PlatformPair description="32 only">
+<Both>
+<!-- ##Terminate## -->[DONE]
+<!-- ##Terminate with CleanItem## --> [DONE]
+<!-- ##DCE-QUERY## -->
+<!-- ##CENSUS-QUERY (suggestionAction: TERMINATE)## -->
+<!-- ##CENSUS-QUERY (suggestionAction: CLEAN)## -->
+<!-- ##DENY## -->
+<!-- ##Feedback/Sourcing## -->[DONE]
+
+
+################################################################
+Requirements:
+<Policy id="RAN2202T"
+- dapat meron space between "Policy" and "id" since ginagamit ang space bilang pang-split ng line

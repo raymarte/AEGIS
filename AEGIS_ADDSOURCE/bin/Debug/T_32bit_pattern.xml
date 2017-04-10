@@ -1,0 +1,885 @@
+    <PlatformPair description="Terminate_32bit">
+      <Platform32bit>
+	 <Policy id="2810T" l10n="106" name="Troj_Gen" enable="True" action="Terminate" description="MUXxDedicIpMixer" popupTemplate="..." risk="High" ruleOperation="11" disableWLModule="RCL" enableWL="True" enableFileFeedback="True" confidenceLevel="7">
+		<!--DonaldC 1-DNLD30 9/16/2016-->		
+    <RuleSet ruleSetOperation="And">
+        <Rule>
+            <Subject type="Any" />
+            <Object type="API">
+                <Name>ZwCreateMutant</Name>
+                <MutexName>MUXxDedicIpMixer</MutexName>
+              </Object>
+              <Operation>Create</Operation>
+            <FileFeedbackItem>Subject</FileFeedbackItem>
+        </Rule>
+    </RuleSet>
+	</Policy>			
+	<Policy id="2809T" l10n="106" name="Troj_Gen" enable="True" action="Terminate" description="xDSockSMUX" popupTemplate="..." risk="High" ruleOperation="11" disableWLModule="RCL" enableWL="True" enableFileFeedback="True" confidenceLevel="7">
+		<!--DonaldC 1-DNLD29 9/16/2016-->		
+    <RuleSet ruleSetOperation="And">
+        <Rule>
+            <Subject type="Any" />
+            <Object type="API">
+                <Name>ZwCreateMutant</Name>
+                <MutexName>xDSockSMUX</MutexName>
+              </Object>
+              <Operation>Create</Operation>
+            <FileFeedbackItem>Subject</FileFeedbackItem>
+        </Rule>
+    </RuleSet>
+	</Policy>
+	<Policy id="2808T" l10n="106" name="Troj_Gen" enable="True" action="Terminate" description="xDLogCMUX" popupTemplate="..." risk="High"  ruleOperation="11" disableWLModule="RCL" enableWL="True" enableFileFeedback="True" confidenceLevel="7">
+		<!--DonaldC 1-DNLD28 9/16/2016-->		
+    <RuleSet ruleSetOperation="And">
+        <Rule>
+            <Subject type="Any" />
+            <Object type="API">
+                <Name>ZwCreateMutant</Name>
+                <MutexName>xDLogCMUX</MutexName>
+              </Object>
+              <Operation>Create</Operation>
+            <FileFeedbackItem>Subject</FileFeedbackItem>
+        </Rule>
+    </RuleSet>
+	</Policy>	
+	
+	<Policy id="2807T" l10n="106" name="Troj_Gen" enable="True" action="Terminate" description="xDIpScnMUX" popupTemplate="..." risk="High" ruleOperation="11" disableWLModule="RCL" enableWL="True" enableFileFeedback="True" confidenceLevel="7">
+<!--DonaldC 1-DNLD27 9/16/2016-->		
+    <RuleSet ruleSetOperation="And">
+        <Rule>
+            <Subject type="Any" />
+            <Object type="API">
+                <Name>ZwCreateMutant</Name>
+                <MutexName>xDIpScnMUX</MutexName>
+              </Object>
+              <Operation>Create</Operation>
+            <FileFeedbackItem>Subject</FileFeedbackItem>
+        </Rule>
+    </RuleSet>
+	</Policy>
+	 <Policy id="RAN2018T" l10n="101" name="Locky Ransomware" enable="True" action="Terminate" description="Locky HOT Threat 32-bit" popupTemplate="...." risk="High" enableWL="True" ruleOperation="11" enableCleanWL="True" enableFileFeedback="True" confidenceLevel="7">
+          <!--MarkMa 1-MJSM10 07/07/2016-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Any" />
+              <Object type="File">
+                <FilePath>$mytemp$\*.exe</FilePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Any" />
+              <Object type="File">
+                <FilePath>$userprofile$\local settings\temp\*.exe</FilePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Any" />
+              <Object type="File">
+                <FilePath>$userprofile$\appdata\local\temp\*.exe</FilePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Any" />
+              <Object type="Process">
+                <ImagePath>$mytemp$\*.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Any" />
+              <Object type="Process">
+                <ImagePath>$userprofile$\local settings\temp\*.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Any" />
+              <Object type="Process">
+                <ImagePath>$userprofile$\appdata\local\temp\*.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Any" />
+              <Object type="APIWithJob">
+                <Name>ZwWriteVirtualMemory</Name>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+              <JobSet jobSetOperation="And">
+                <Job type="PackedFileChecker" source="Subject" />
+              </JobSet>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4099T" l10n="101" name="Cryptowall 4" enable="True" action="Terminate" description="Cryptowall 4" popupTemplate="Cryptowall 4" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-KQCSVK 8/6/2015 5:20PM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\????????\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Registry">
+                <RegistryKey>HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce</RegistryKey>
+                <RegistryValue />
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4101T" l10n="101" name="Cryptowall 4" enable="True" action="Terminate" description="Cryptowall 4" popupTemplate="Cryptowall 4" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-KQCSVK 8/6/2015 5:20PM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\???????\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Registry">
+                <RegistryKey>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</RegistryKey>
+                <RegistryValue />
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4102T" l10n="101" name="Cryptowall 4" enable="True" action="Terminate" description="Cryptowall 4" popupTemplate="Cryptowall 4" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-KQCSVK 8/6/2015 5:20PM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\???????\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Registry">
+                <RegistryKey>HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce</RegistryKey>
+                <RegistryValue />
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4073T" l10n="101" name="Cryptowall 3" enable="True" action="Terminate" description="Cryptowall 3" popupTemplate="Cryptowall 3" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-K1BBH7 7/22/2015 1:19PM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\????????\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Registry">
+                <RegistryKey>HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce</RegistryKey>
+                <RegistryValue />
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4082T" l10n="101" name="Cryptowall 3" enable="True" action="Terminate" description="Cryptowall 3" popupTemplate="Cryptowall 3" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RikaG 1-KUAHV5 9/29/2015 10:27AM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Start Menu\Programs\Startup\???????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\???????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\???????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Process">
+                <ImagePath>$systemdir$\svchost.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4084T" l10n="101" name="Cryptowall 3" enable="True" action="Terminate" description="Cryptowall 3" popupTemplate="Cryptowall 3" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RikaG 1-KUAHV5 9/29/2015 10:27AM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Start Menu\Programs\Startup\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Process">
+                <ImagePath>$systemdir$\svchost.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4098T" l10n="101" name="Cryptowall 4" enable="True" action="Terminate" description="Cryptowall 4" popupTemplate="Cryptowall 4" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-KQCSVK 8/6/2015 5:20PM-->
+          <!--modified by RikaG 1-KZ6OSO 10/1/2015 8:59:05 AM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\????????\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Registry">
+                <RegistryKey>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</RegistryKey>
+                <RegistryValue />
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4100T" l10n="101" name="Cryptowall 4" enable="True" action="Terminate" description="Cryptowall 4" popupTemplate="Cryptowall 4" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-KQCSVK 8/6/2015 5:20PM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\????????\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\????????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Process">
+                <ImagePath>$systemdir$\svchost.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4103T" l10n="101" name="Cryptowall 4" enable="True" action="Terminate" description="Cryptowall 4" popupTemplate="Cryptowall 4" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-KQCSVK 8/6/2015 5:20PM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\???????\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\???????.dll</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Process">
+                <ImagePath>$systemdir$\svchost.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4072T" l10n="101" name="Cryptowall 3" enable="True" action="Terminate" description="Cryptowall 3" popupTemplate="Cryptowall 3" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-K1BBH7 7/22/2015 1:19PM-->
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\????????\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Registry">
+                <RegistryKey>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</RegistryKey>
+                <RegistryValue />
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4074T" l10n="101" name="Cryptowall 3" enable="True" action="Terminate" description="Cryptowall 3" popupTemplate="Cryptowall 3" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-K1BBH7 7/22/2015 1:19PM-->
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\????????\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Start Menu\Programs\Startup\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+        <Policy id="RAN4075T" l10n="101" name="Cryptowall 3" enable="True" action="Terminate" description="Cryptowall 3" popupTemplate="Cryptowall 3" risk="High" enableWL="False" ruleOperation="11" enableFileFeedback="True" confidenceLevel="7">
+          <!--RonnieG 1-K1BBH7 7/22/2015 1:19PM-->
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$rootdir$\????????\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="Or">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$myappdata$\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\AppData\Roaming\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="File">
+                <FilePath>$userprofile$\Application Data\????????.exe</FilePath>
+              </Object>
+              <Operation>Write</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+          <RuleSet ruleSetOperation="And">
+            <Rule>
+              <Subject type="Process">
+                <SubjectImagePath>$windir$\explorer.exe</SubjectImagePath>
+                <ImageSignature />
+              </Subject>
+              <Object type="Process">
+                <ImagePath>$systemdir$\svchost.exe</ImagePath>
+              </Object>
+              <Operation>Create</Operation>
+              <FileFeedbackItem>Subject</FileFeedbackItem>
+            </Rule>
+          </RuleSet>
+        </Policy>
+      </Platform32bit>
+      <Platform64bit></Platform64bit>
+    </PlatformPair>
