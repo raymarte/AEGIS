@@ -24,6 +24,8 @@ namespace AEGIS_ADDSOURCE
             {
                 string[] szLinePRNSplit = szLinePRN.Split(',');
                 string szXMLPath = string.Format("{0}\\{1}-TMTD-{2}.XML",szSubmissionpath,szLinePRNSplit[0],szLinePRNSplit[2]);
+                if(!File.Exists(szXMLPath))
+                    szXMLPath = string.Format("{0}\\{1}-TMTD-{2}.xml", szSubmissionpath, szLinePRNSplit[0], szLinePRNSplit[2]);
                 string szOutputPolicy = GETPOLICY(szXMLPath, szLinePRNSplit[1]);
                 string szAttribPolicy = GETATTRIB(szXMLPath, szLinePRNSplit[1]);
                 list_output.Add(szAttribPolicy);
@@ -130,7 +132,7 @@ namespace AEGIS_ADDSOURCE
                 else if (szPolicyId.EndsWith("T"))
                 {
                     if (szPolicyLine.Contains("cleanItem"))
-                        szRetFormat = GET_MARKER_NUM("<!-- ##Terminate with CleanItem## -->", list_section_markers).ToString();
+                        szRetFormat = GET_MARKER_NUM("<!-- ##Terminate_with_CleanItem## -->", list_section_markers).ToString();
                     else
                         szRetFormat = GET_MARKER_NUM("<!-- ##Terminate## -->", list_section_markers).ToString();
                 }
@@ -141,12 +143,16 @@ namespace AEGIS_ADDSOURCE
                     else if (szPolicyLine.Contains("queryModule=\"Census\""))
                     {
                         if (szPolicyLine.Contains("suggestionAction=\"Terminate\""))
-                            szRetFormat = GET_MARKER_NUM("<!-- ##CENSUS-QUERY (suggestionAction: TERMINATE)## -->", list_section_markers).ToString();
+                            szRetFormat = GET_MARKER_NUM("<!-- ##CENSUS-QUERY(suggestionAction:TERMINATE)## -->", list_section_markers).ToString();
                         else if (szPolicyLine.Contains("suggestionAction=\"Clean\""))
-                            szRetFormat = GET_MARKER_NUM("<!-- ##CENSUS-QUERY (suggestionAction: CLEAN)## -->", list_section_markers).ToString();
+                            szRetFormat = GET_MARKER_NUM("<!-- ##CENSUS-QUERY(suggestionAction:CLEAN)## -->", list_section_markers).ToString();
                         else if (szPolicyLine.Contains("suggestionAction=\"Deny\""))
-                            szRetFormat = GET_MARKER_NUM("<!-- ##DENY## -->", list_section_markers).ToString();
+                            szRetFormat = GET_MARKER_NUM("<!-- ##CENSUS-QUERY(suggestionAction:DENY)## -->", list_section_markers).ToString();
                     }
+                }
+                else if (szPolicyId.EndsWith("D"))
+                {
+                    szRetFormat = GET_MARKER_NUM("<!-- ##DENY## -->", list_section_markers).ToString();
                 }
             }
             #endregion
@@ -176,8 +182,12 @@ namespace AEGIS_ADDSOURCE
                         else if (szPolicyLine.Contains("suggestionAction=\"Clean\""))
                             szRetFormat = GET_MARKER_NUM("<!-- ##Query_32bit_CENSUS-QUERY(suggestionAction:CLEAN)## -->", list_section_markers).ToString();
                         else if (szPolicyLine.Contains("suggestionAction=\"Deny\""))
-                            szRetFormat = GET_MARKER_NUM("<!-- ##32bit_DENY## -->", list_section_markers).ToString();
+                            szRetFormat = GET_MARKER_NUM("<!-- ##Query_32bit_CENSUS-QUERY(suggestionAction:DENY)## -->", list_section_markers).ToString();
                     }
+                }
+                else if (szPolicyId.EndsWith("D"))
+                {
+                    szRetFormat = GET_MARKER_NUM("<!-- ##32bit_DENY## -->", list_section_markers).ToString();
                 }
             }
             #endregion
@@ -207,8 +217,12 @@ namespace AEGIS_ADDSOURCE
                         else if (szPolicyLine.Contains("suggestionAction=\"Clean\""))
                             szRetFormat = GET_MARKER_NUM("<!-- ##Query_64bit_CENSUS-QUERY(suggestionAction:CLEAN)## -->", list_section_markers).ToString();
                         else if (szPolicyLine.Contains("suggestionAction=\"Deny\""))
-                            szRetFormat = GET_MARKER_NUM("<!-- ##64bit_DENY## -->", list_section_markers).ToString();
+                            szRetFormat = GET_MARKER_NUM("<!-- ##Query_64bit_CENSUS-QUERY(suggestionAction:DENY)## -->", list_section_markers).ToString();
                     }
+                }
+                else if (szPolicyId.EndsWith("D"))
+                {
+                    szRetFormat = GET_MARKER_NUM("<!-- ##64bit_DENY## -->", list_section_markers).ToString();
                 }
             }
             #endregion

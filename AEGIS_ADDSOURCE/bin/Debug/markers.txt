@@ -5,19 +5,22 @@
 <!-- ##Query_32bit_DCE-QUERY## -->
 <!-- ##Query_32bit_CENSUS-QUERY(suggestionAction:TERMINATE)## -->
 <!-- ##Query_32bit_CENSUS-QUERY(suggestionAction:CLEAN)## -->
+<!-- ##Query_32bit_CENSUS-QUERY(suggestionAction:DENY)## -->
 <!-- ##32bit_DENY## -->
 <!-- ##Query_64bit_DCE-QUERY## -->
 <!-- ##Query_64bit_CENSUS-QUERY(suggestionAction:TERMINATE)## -->
 <!-- ##Query_64bit_CENSUS-QUERY(suggestionAction:CLEAN)## -->
+<!-- ##Query_64bit_CENSUS-QUERY(suggestionAction:DENY)## -->
 <!-- ##64bit_DENY## -->
 <!-- ##Feedback/Sourcing32## -->
 <!-- ##Feedback/Sourcing64## -->
 <PlatformPair description="32 only">
 <Both>
 <!-- ##Terminate## -->
-<!-- ##Terminate with CleanItem## -->
+<!-- ##Terminate_with_CleanItem## -->
 <!-- ##DCE-QUERY## -->
-<!-- ##CENSUS-QUERY (suggestionAction: TERMINATE)## -->
-<!-- ##CENSUS-QUERY (suggestionAction: CLEAN)## -->
+<!-- ##CENSUS-QUERY(suggestionAction:TERMINATE)## -->
+<!-- ##CENSUS-QUERY(suggestionAction:CLEAN)## -->
+<!-- ##CENSUS-QUERY(suggestionAction:DENY)## -->
 <!-- ##DENY## -->
 <!-- ##Feedback/Sourcing## -->
