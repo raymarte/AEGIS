@@ -98,7 +98,8 @@ namespace AEGIS_ADDSOURCE
                         }
                     }
                 }
-                szPrevLine = szLineAtTemp;
+                if(!szLineAtTemp.Equals(string.Empty))
+                    szPrevLine = szLineAtTemp;
             }
             return szOutGetAttrib;
         }
